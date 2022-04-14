@@ -12,7 +12,7 @@
                    placeholder="请输入密码" />
       </van-cell-group>
       <van-button type="primary"
-                  @click="get"
+                  @click="toLogin"
                   class="btn">登录</van-button>
     </div>
     <div class="bot">
@@ -25,11 +25,16 @@
 export default {
   data () {
     return {
-      name: 'Vue.js'
     }
   },
   created () {
-    console.log(11);
+    let token = localStorage.getItem('token')
+    if (token && Number(token) + 86400000 > Date.now()) {
+      this.$router.push({
+        name: 'AdminHome'
+      })
+      return
+    }
   },
   methods: {
     get () {
@@ -39,6 +44,12 @@ export default {
         if (res.code == 200) {
           console.log(res.data);
         }
+      })
+    },
+    toLogin () {
+      localStorage.setItem('token', Date.now())
+      this.$router.push({
+        name: 'AdminHome'
       })
     }
   }

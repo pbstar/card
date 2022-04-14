@@ -2,12 +2,24 @@
   <div class="home">
     <div class="box">
       <van-grid :gutter="10">
-        <van-grid-item icon="photo-o"
-                       text="文字" />
-        <van-grid-item icon="photo-o"
-                       text="文字" />
-        <van-grid-item icon="photo-o"
-                       text="文字" />
+        <van-grid-item icon="bag-o"
+                       @click="toPage('AdminGoods')"
+                       text="商品管理" />
+        <van-grid-item icon="friends-o"
+                       @click="toPage('AdminLower')"
+                       text="下级管理" />
+        <van-grid-item icon="todo-list-o"
+                       @click="toPage('AdminOrder')"
+                       text="订单管理" />
+        <van-grid-item icon="cluster-o"
+                       @click="toPage('AdminLevel')"
+                       text="级别管理" />
+        <van-grid-item icon="chart-trending-o"
+                       @click="toPage('AdminEarnings')"
+                       text="收益管理" />
+        <van-grid-item icon="shop-o"
+                       @click="toPage('Store')"
+                       text="店铺中心" />
       </van-grid>
     </div>
   </div>
@@ -15,6 +27,19 @@
 
 <script>
 export default {
+  data () {
+    return {
+    }
+  },
+  created () {
+  },
+  methods: {
+    toPage (name) {
+      this.$router.push({
+        name: name
+      })
+    }
+  }
 }
 </script>
 
