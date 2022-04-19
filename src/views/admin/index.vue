@@ -1,8 +1,9 @@
 <template>
-  <div @click="istopRight=false">
+  <div @click="istopRight=false"
+       class="home">
     <div class="top">
       <div class="tleft">
-梦辰号卡管理系统
+        梦辰号卡管理系统
       </div>
       <div class="tright">
         <span class="name"
@@ -103,6 +104,11 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .top {
   display: flex;
   justify-content: space-between;
@@ -112,7 +118,7 @@ export default {
   padding: 0 10px;
   box-shadow: 0 1px 2px #b4b4b4;
 }
-.tleft{
+.tleft {
   font-weight: 800;
   font-size: 15px;
 }
@@ -150,7 +156,7 @@ export default {
   z-index: 201;
 }
 .mid {
-  min-height: calc(100vh - 50px);
+  flex: 1;
   background-color: #eee;
 }
 .nav {

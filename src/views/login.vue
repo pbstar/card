@@ -43,9 +43,9 @@ export default {
   methods: {
     toLogin () {
       if (this.user == "")
-        return Notify({ type: "danger", message: "账号不能为空！" });
+        return Notify({ type: "danger", duration: "2000", message: "账号不能为空！" });
       if (this.pass == "")
-        return Notify({ type: "danger", message: "密码不能为空！" });
+        return Notify({ type: "danger", duration: "2000", message: "密码不能为空！" });
       this.$http.get("login.php", {
         user: this.user,
         pass: this.pass,
@@ -56,6 +56,7 @@ export default {
           Notify({
             type: "primary",
             message: "登录成功！",
+            duration: "1500",
             onOpened: () => {
               setTimeout(() => {
                 this.$router.push({
@@ -66,7 +67,7 @@ export default {
           });
 
         } else {
-          Notify({ type: "danger", message: "账号或密码错误！" });
+          Notify({ type: "danger", duration: "2000", message: "账号或密码错误！" });
         }
       });
     },
@@ -76,7 +77,7 @@ export default {
 
 <style scoped>
 .home {
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #eee;
   overflow: hidden;
   display: flex;
