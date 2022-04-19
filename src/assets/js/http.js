@@ -1,6 +1,5 @@
 import axios from 'axios';
-axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'https://apitest.gp519.com/api/';
+axios.defaults.baseURL = 'http://apinew.mcweb.top/card/';
 export default {
     get (url, params) {
         return new Promise((resolve, reject) => {

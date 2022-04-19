@@ -3,57 +3,75 @@
     <div class="top">
       <img src="../assets/logo.png"
            class="logo"
-           alt="">
+           alt="" />
       <van-cell-group inset
                       class="inputBox">
         <van-field label="账号"
+                   v-model="user"
                    placeholder="请输入账号" />
         <van-field label="密码"
+                   v-model="pass"
+                   type="password"
                    placeholder="请输入密码" />
       </van-cell-group>
       <van-button type="primary"
                   @click="toLogin"
                   class="btn">登录</van-button>
     </div>
-    <div class="bot">
-      ©Copyright2022
-    </div>
+    <div class="bot">©Copyright2022</div>
   </div>
 </template>
 
 <script>
+import { Notify } from "vant";
 export default {
   data () {
     return {
-    }
+      user: "",
+      pass: "",
+    };
   },
   created () {
-    let token = localStorage.getItem('token')
+    let token = localStorage.getItem("token");
     if (token && Number(token) + 86400000 > Date.now()) {
       this.$router.push({
-        name: 'AdminHome'
-      })
-      return
+        name: "AdminHome",
+      });
+      return;
     }
   },
   methods: {
-    get () {
-      this.$http.get('OssFileApi/GetOrgResById', {
-        resid: Number(1234)
-      }).then(res => {
-        if (res.code == 200) {
-          console.log(res.data);
-        }
-      })
-    },
     toLogin () {
-      localStorage.setItem('token', Date.now())
-      this.$router.push({
-        name: 'AdminHome'
-      })
-    }
-  }
-}
+      if (this.user == "")
+        return Notify({ type: "danger", message: "账号不能为空！" });
+      if (this.pass == "")
+        return Notify({ type: "danger", message: "密码不能为空！" });
+      this.$http.get("login.php", {
+        user: this.user,
+        pass: this.pass,
+      }).then((res) => {
+        if (res.code == 200) {
+          localStorage.setItem("token", Date.now());
+          localStorage.setItem("uid", res.data.id);
+          Notify({
+            type: "primary",
+            message: "登录成功！",
+            onOpened: () => {
+              setTimeout(() => {
+                this.$router.push({
+                  name: "AdminHome",
+                });
+              }, 500);
+            }
+          });
+
+        } else {
+          Notify({ type: "danger", message: "账号或密码错误！" });
+        }
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>

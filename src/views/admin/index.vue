@@ -1,7 +1,9 @@
 <template>
   <div @click="istopRight=false">
     <div class="top">
-      <span>啊啊啊啊啊啊</span>
+      <div class="tleft">
+梦辰号卡管理系统
+      </div>
       <div class="tright">
         <span class="name"
               @click.stop="istopRight=!istopRight">小梦</span>
@@ -77,8 +79,8 @@ export default {
   },
   methods: {
     get () {
-      this.$http.get('OssFileApi/GetOrgResById', {
-        resid: Number(1234)
+      this.$http.get('login.php', {
+        user: Number(1234)
       }).then(res => {
         if (res.code == 200) {
           console.log(res.data);
@@ -109,6 +111,10 @@ export default {
   background-color: #fff;
   padding: 0 10px;
   box-shadow: 0 1px 2px #b4b4b4;
+}
+.tleft{
+  font-weight: 800;
+  font-size: 15px;
 }
 .tright {
   height: 50px;
