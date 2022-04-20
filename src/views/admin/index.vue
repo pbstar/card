@@ -7,7 +7,7 @@
       </div>
       <div class="tright">
         <span class="name"
-              @click.stop="istopRight=!istopRight">小梦</span>
+              @click.stop="istopRight=!istopRight">{{data.name}}</span>
         <van-icon name="arrow-down"
                   @click.stop="istopRight=!istopRight"
                   v-show="!istopRight"
@@ -40,7 +40,7 @@
       </div>
       <div style="height:11px"
            v-show="pageText=='首页'"></div>
-      <router-view />
+      <router-view :data="data" />
     </div>
   </div>
 </template>
@@ -50,7 +50,8 @@ export default {
   data () {
     return {
       istopRight: false,
-      pageText: '首页'
+      pageText: '首页',
+      data: null
     }
   },
   watch: {
@@ -77,17 +78,10 @@ export default {
       })
       return
     }
+    let data = JSON.parse(localStorage.getItem('userData'))
+    if (data) this.data = data
   },
   methods: {
-    get () {
-      this.$http.get('login.php', {
-        user: Number(1234)
-      }).then(res => {
-        if (res.code == 200) {
-          console.log(res.data);
-        }
-      })
-    },
     toClear () {
       localStorage.clear()
       this.$router.push({
@@ -114,8 +108,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  background-color: #fff;
-  padding: 0 10px;
+  background-color: #001938;
+  color: #fff;
+  padding: 0 15px;
   box-shadow: 0 1px 2px #b4b4b4;
 }
 .tleft {
@@ -130,27 +125,31 @@ export default {
 }
 .tright .name {
   margin-right: 3px;
-  font-size: 12px;
-  color: #333;
+  font-size: 13px;
+  line-height: 14px;
 }
 .trbox {
   width: 60px;
   position: absolute;
-  top: 58px;
+  top: 45px;
   right: -4px;
   background-color: #fff;
+  color: #333;
   z-index: 200;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 25px;
-  padding: 3px 3px;
+  padding: 5px 5px;
   box-shadow: 0 1px 2px #c3c3c3;
+}
+.trbox span {
+  margin-top: 2px;
 }
 .trboxtop {
   position: absolute;
-  top: 48px;
+  top: 35px;
   right: 15px;
   transform: rotate(-90deg);
   z-index: 201;

@@ -6,23 +6,24 @@
               @load="onLoad">
       <van-grid :column-num="1"
                 :gutter="10">
-        <van-grid-item v-for="value in list"
-                       :key="value">
+        <van-grid-item v-for="(item,index) in list"
+                       :key="index">
           <div class="box">
             <van-image width="80"
                        height="80"
-                       src="https://cdn.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
+                       :src="item.img" />
             <div class="bright">
               <div class="br1">
-                标题
+                {{item.title}}
               </div>
               <div class="br2">
-                <span>佣金：{{value}}</span>
+                <span>佣金：{{item.comm}}元</span>
               </div>
               <div class="br3">
-                <van-switch v-model="checked"
+                <van-switch v-model="item.isShow"
                             inactive-color="#eee"
-                            size="20px" />
+                            @click="toClick(item.id,item.isShow)"
+                            size="16px" />
               </div>
             </div>
           </div>
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
   data () {
     return {
@@ -41,31 +43,42 @@ export default {
       list: 10
     }
   },
+  props: {
+    data: {
+      type: Object,
+      default: null
+    }
+  },
   created () {
+    this.getOrder()
   },
   methods: {
-    get () {
-      this.$http.get('OssFileApi/GetOrgResById', {
-        resid: Number(1234)
+    getOrder () {
+      this.$http.get('getGoods.php', {
+        uid: Number(this.data.id)
       }).then(res => {
         if (res.code == 200) {
-          console.log(res.data);
+          this.list = res.data
+          this.finished = true
         }
-      })
-    },
-    toClear () {
-      localStorage.clear()
-      this.$router.push({
-        name: 'Login'
-      })
-    },
-    toPage (name) {
-      this.$router.push({
-        name: name
       })
     },
     onLoad () {
       console.log(1);
+    },
+    toClick (id, val) {
+      this.$http.post('upGoodsShow.php', {
+        uid: Number(this.data.id),
+        gid: Number(id),
+        type: val ? 1 : 2
+      }).then(res => {
+        if (res.code == 200) {
+          Toast.success(val ? '上架成功' : '下架成功');
+        } else {
+          Toast.fail('操作失败')
+        }
+        this.getOrder()
+      })
     }
   }
 }
@@ -78,17 +91,27 @@ export default {
 }
 .bright {
   flex: 1;
+  padding-left: 10px;
 }
 .br1 {
   height: 36px;
   line-height: 18px;
   margin-bottom: 4px;
   font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .br2 {
   height: 18px;
   line-height: 18px;
-  margin-bottom: 2px;
-  font-size: 13px;
+  font-size: 12px;
+  color: rgb(205, 0, 0);
+}
+.br3 {
+  height: 16px;
+  margin-top: 4px;
 }
 </style>

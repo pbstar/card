@@ -7,9 +7,11 @@
       <van-cell-group inset
                       class="inputBox">
         <van-field label="账号"
+                   label-width="50"
                    v-model="user"
                    placeholder="请输入账号" />
         <van-field label="密码"
+                   label-width="50"
                    v-model="pass"
                    type="password"
                    placeholder="请输入密码" />
@@ -52,7 +54,7 @@ export default {
       }).then((res) => {
         if (res.code == 200) {
           localStorage.setItem("token", Date.now());
-          localStorage.setItem("uid", res.data.id);
+          localStorage.setItem("userData", JSON.stringify(res.data));
           Notify({
             type: "primary",
             message: "登录成功！",
@@ -86,12 +88,14 @@ export default {
   align-items: center;
 }
 .top {
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 80px;
 }
 .inputBox {
+  width: 90%;
   margin-top: 40px;
 }
 .btn {
