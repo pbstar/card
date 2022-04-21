@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
   data () {
     return {
@@ -35,6 +36,8 @@ export default {
   },
   methods: {
     toPage (name) {
+      let nopageList = ['AdminEarnings', 'Store'];
+      if (nopageList.includes(name)) return Toast.fail('开发中...')
       this.$router.push({
         name: name
       })

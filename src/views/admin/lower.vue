@@ -4,7 +4,7 @@
       <van-button icon="plus"
                   size="small"
                   type="primary"
-                  @click="isAddShow=!isAddShow">新增下级</van-button>
+                  @click="toPage('AdminAddLower')">新增下级</van-button>
     </div>
     <div class="mid">
       <van-collapse v-model="activeNames">
@@ -15,33 +15,6 @@
           P{{item.level}}级别代理，订单总数为{{item.orderNum}}条。
         </van-collapse-item>
       </van-collapse>
-      <van-popup v-model:show="isAddShow"
-                 position="bottom">
-        <van-form @submit="onSubmit">
-          <van-cell-group inset>
-            <van-field v-model="username"
-                       name="姓名"
-                       label="姓名"
-                       placeholder="请输入下级姓名" />
-            <van-field v-model="username"
-                       name="账号"
-                       label="账号"
-                       placeholder="请输入下级账号" />
-            <van-field v-model="password"
-                       name="密码"
-                       label="密码"
-                       placeholder="请输入下级密码" />
-          </van-cell-group>
-          <div style="margin: 16px;">
-            <van-button round
-                        block
-                        type="primary"
-                        native-type="submit">
-              提交
-            </van-button>
-          </div>
-        </van-form>
-      </van-popup>
     </div>
   </div>
 </template>
@@ -51,8 +24,7 @@ export default {
   data () {
     return {
       levelList: [],
-      activeNames: [],
-      isAddShow: false
+      activeNames: []
     };
   },
   props: {
@@ -71,8 +43,12 @@ export default {
       }).then((res) => {
         if (res.code == 200) {
           this.levelList = res.data
-          console.log(res.data);
         }
+      })
+    },
+    toPage (name) {
+      this.$router.push({
+        name: name
       })
     }
   }

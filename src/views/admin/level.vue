@@ -40,5 +40,6 @@ export default {
   margin: 10px;
   font-size: 14px;
   color: #222;
+  line-height: 20px;
 }
 </style>

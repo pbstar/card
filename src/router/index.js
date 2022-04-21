@@ -11,6 +11,7 @@ import AdminLevel from '../views/admin/level'
 import AdminGoods from '../views/admin/goods'
 import AdminEarnings from '../views/admin/earnings'
 import AdminOrder from '../views/admin/order'
+import AdminAddLower from '../views/admin/addlower'
 
 const routes = [
     {
@@ -65,7 +66,11 @@ const routes = [
             path: 'lower',
             name: 'AdminLower',
             component: AdminLower
-        },]
+        }, {
+            path: 'addlower',
+            name: 'AdminAddLower',
+            component: AdminAddLower
+        }]
     }, {
         path: '/:pathMatch(.*)*',
         redirect: '/admin/home',

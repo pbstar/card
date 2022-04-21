@@ -3,7 +3,9 @@
        class="home">
     <div class="top">
       <div class="tleft">
-        梦辰号卡管理系统
+        <img src="/favicon.ico"
+             alt="">
+        <span>梦辰号卡管理系统</span>
       </div>
       <div class="tright">
         <span class="name"
@@ -35,6 +37,11 @@
                   style="margin-right:2px" />
         <span class="a"
               @click="toPage('AdminHome')">首页</span>
+        <span class="slash"
+              v-show="pageText2">/</span>
+        <span class="a"
+              v-show="pageText2"
+              @click="toPage2()">{{pageText2}}</span>
         <span class="slash">/</span>
         <span>{{pageText}}</span>
       </div>
@@ -51,6 +58,7 @@ export default {
     return {
       istopRight: false,
       pageText: '首页',
+      pageText2: '',
       data: null
     }
   },
@@ -58,6 +66,7 @@ export default {
     $route: {
       handler () {
         let text = this.$route.name
+        this.pageText2 = ''
         if (text == 'AdminHome') this.pageText = '首页'
         else if (text == 'AdminEarnings') this.pageText = '收益管理'
         else if (text == 'AdminGoods') this.pageText = '商品管理'
@@ -65,6 +74,7 @@ export default {
         else if (text == 'AdminLower') this.pageText = '下级管理'
         else if (text == 'AdminOrder') this.pageText = '订单管理'
         else if (text == 'AdminUpPass') this.pageText = '修改密码'
+        else if (text == 'AdminAddLower') { this.pageText = '新增下级'; this.pageText2 = '下级管理' }
       },
       immediate: true,
       deep: true
@@ -92,6 +102,9 @@ export default {
       this.$router.push({
         name: name
       })
+    },
+    toPage2 () {
+      if (this.pageText2 == '下级管理') this.toPage('AdminLower')
     }
   }
 }
@@ -116,6 +129,12 @@ export default {
 .tleft {
   font-weight: 800;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+.tleft img {
+  width: 20px;
+  margin-right: 5px;
 }
 .tright {
   height: 50px;
