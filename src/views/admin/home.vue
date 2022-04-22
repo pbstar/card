@@ -18,7 +18,7 @@
                        @click="toPage('AdminEarnings')"
                        text="收益管理" />
         <van-grid-item icon="shop-o"
-                       @click="toPage('Store')"
+                       @click="toStore()"
                        text="店铺中心" />
       </van-grid>
     </div>
@@ -32,14 +32,28 @@ export default {
     return {
     }
   },
+  props: {
+    data: {
+      type: Object,
+      default: null
+    }
+  },
   created () {
   },
   methods: {
     toPage (name) {
-      let nopageList = ['AdminEarnings', 'Store'];
+      let nopageList = ['AdminEarnings'];
       if (nopageList.includes(name)) return Toast.fail('开发中...')
       this.$router.push({
         name: name
+      })
+    },
+    toStore () {
+      this.$router.push({
+        name: 'Store',
+        query: {
+          uid: this.data.id
+        }
       })
     }
   }

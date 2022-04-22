@@ -38,7 +38,7 @@ export default {
 <style scoped>
 .tip {
   margin: 10px;
-  font-size: 14px;
+  font-size: 13px;
   color: #222;
   line-height: 20px;
 }
