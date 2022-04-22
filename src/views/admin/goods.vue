@@ -40,7 +40,7 @@ export default {
     return {
       loading: false,
       finished: false,
-      list: 10
+      list: []
     }
   },
   props: {
@@ -50,10 +50,10 @@ export default {
     }
   },
   created () {
-    this.getOrder()
+    this.getGoods()
   },
   methods: {
-    getOrder () {
+    getGoods () {
       this.$http.get('getGoods.php', {
         uid: Number(this.data.id)
       }).then(res => {

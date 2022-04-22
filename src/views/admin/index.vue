@@ -59,7 +59,7 @@ export default {
       istopRight: false,
       pageText: '首页',
       pageText2: '',
-      data: null
+      data: ''
     }
   },
   watch: {
@@ -88,6 +88,7 @@ export default {
       })
       return
     }
+    console.log();
     let data = JSON.parse(localStorage.getItem('userData'))
     if (data) this.data = data
   },
@@ -117,6 +118,10 @@ export default {
   flex-direction: column;
 }
 .top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,6 +130,7 @@ export default {
   color: #fff;
   padding: 0 15px;
   box-shadow: 0 1px 2px #b4b4b4;
+  z-index: 10;
 }
 .tleft {
   font-weight: 800;
@@ -176,6 +182,7 @@ export default {
 .mid {
   flex: 1;
   background-color: #eee;
+  padding-top: 50px;
 }
 .nav {
   height: 50px;

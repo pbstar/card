@@ -8,17 +8,25 @@
         <template #title>
           <div class="box">
             <div class="btop">
-              <span>订单编号：DD{{item.time}}{{item.id}}</span>
-              <span style="color:rgb(220, 0, 0)">{{item.state==1?'待审核':(item.state==2?'已发货':(item.state==3?'已驳回':(item.state==1?'待结算':'已结算')))}}</span>
+              <span>订单编号：{{item.time}}{{item.id}}</span>
+              <div>
+                <span style="color:rgb(220, 0, 0)">{{item.state==1?'待审核':(item.state==2?'已发货':(item.state==3?'已驳回':(item.state==1?'待结算':'已结算')))}}</span>
+                <span v-show="item.stateText">（{{item.stateText}}）</span>
+              </div>
             </div>
             <div class="bmid">{{item.title}}</div>
             <div class="bbot">
               <span>{{formatDate(item.time)}}</span>
-              <span style="color:rgb(220, 0, 0)">佣金：{{item.comm}}</span>
+              <span style="color:rgb(235, 196, 4)">佣金：{{item.comm}}元</span>
             </div>
           </div>
         </template>
-        {{item}}
+        <div class="box2">
+          <p>姓名：{{item.name}}</p>
+          <p>手机号：{{item.tel}}</p>
+          <p>身份证号：{{item.idcard}}</p>
+          <p>地址：{{item.address}}</p>
+        </div>
       </van-collapse-item>
     </van-collapse>
   </div>
@@ -48,7 +56,6 @@ export default {
       }).then((res) => {
         if (res.code == 200) {
           this.orderList = res.data
-          console.log(res.data);
         }
       })
     },
@@ -88,11 +95,16 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 85vw;
 }
 .bbot {
   font-size: 12px;
   color: #888;
   display: flex;
   justify-content: space-between;
+}
+.box2 {
+  font-size: 12px;
+  line-height: 20px;
 }
 </style>
