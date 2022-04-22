@@ -82,13 +82,19 @@ export default {
   },
   created () {
     let token = localStorage.getItem('token')
-    if (token && Number(token) + 86400000 < Date.now()) {
+    if (token) {
+      if (Number(token) + 86400000 < Date.now()) {
+        this.$router.push({
+          name: 'Login'
+        })
+        return
+      }
+    } else {
       this.$router.push({
         name: 'Login'
       })
       return
     }
-    console.log();
     let data = JSON.parse(localStorage.getItem('userData'))
     if (data) this.data = data
   },
