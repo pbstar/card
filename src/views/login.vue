@@ -58,7 +58,7 @@ export default {
           Notify({
             type: "primary",
             message: "登录成功！",
-            duration: "1500",
+            duration: "800",
             onOpened: () => {
               setTimeout(() => {
                 this.$router.push({

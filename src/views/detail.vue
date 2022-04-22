@@ -48,7 +48,7 @@
                      label="详细地址"
                      label-width="60"
                      type="textarea"
-                     placeholder="请输入留言" />
+                     placeholder="请输入详细地址" />
         </van-cell-group>
         <div style="margin: 16px;">
           <van-button round
