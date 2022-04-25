@@ -53,11 +53,11 @@
         <div style="margin: 16px;">
           <van-button round
                       block
-                      :plain="!(name&&idcard&&tel)"
+                      :plain="!(name&&idcard&&tel&&area&&address)"
                       type="primary"
                       @click="toSubmit"
                       native-type="submit">
-            提交
+            提交申请 免费领卡
           </van-button>
         </div>
       </van-form>

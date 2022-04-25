@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { Toast } from 'vant';
+// import { Toast } from 'vant';
 export default {
   data () {
     return {
@@ -42,13 +42,18 @@ export default {
         uid: Number(this.$route.query.uid)
       }).then(res => {
         if (res.code == 200) {
-          this.list = res.data
+          for (let i = 0; i < res.data.length; i++) {
+            if (res.data[i].isShow) this.list.push(res.data[i])
+          }
         }
       })
     },
     toOrder () {
       this.$router.push({
-        name: 'Order'
+        name: 'Order',
+        query: {
+          uid: this.$route.query.uid
+        }
       })
     },
     toDetail (id) {
@@ -61,7 +66,8 @@ export default {
       })
     },
     onClickRight () {
-      Toast.fail('开发中...')
+      //   Toast.fail('开发中...')
+      this.toOrder()
     }
   }
 }
