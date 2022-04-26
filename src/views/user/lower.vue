@@ -4,7 +4,7 @@
       <van-button icon="plus"
                   size="small"
                   type="primary"
-                  @click="toPage('AdminAddLower')">新增下级</van-button>
+                  @click="toPage('UserAddLower')">新增下级</van-button>
     </div>
     <div class="mid">
       <van-collapse v-model="activeNames">

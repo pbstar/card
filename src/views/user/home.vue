@@ -3,19 +3,19 @@
     <div class="box">
       <van-grid :gutter="10">
         <van-grid-item icon="bag-o"
-                       @click="toPage('AdminGoods')"
+                       @click="toPage('UserGoods')"
                        text="商品管理" />
         <van-grid-item icon="friends-o"
-                       @click="toPage('AdminLower')"
+                       @click="toPage('UserLower')"
                        text="下级管理" />
         <van-grid-item icon="todo-list-o"
-                       @click="toPage('AdminOrder')"
+                       @click="toPage('UserOrder')"
                        text="订单管理" />
         <van-grid-item icon="cluster-o"
-                       @click="toPage('AdminLevel')"
+                       @click="toPage('UserLevel')"
                        text="级别管理" />
         <van-grid-item icon="chart-trending-o"
-                       @click="toPage('AdminEarnings')"
+                       @click="toPage('UserEarnings')"
                        text="收益管理" />
         <van-grid-item icon="shop-o"
                        @click="toStore()"
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     toPage (name) {
-      let nopageList = ['AdminEarnings'];
+      let nopageList = ['UserEarnings'];
       if (nopageList.includes(name)) return Toast.fail('开发中...')
       this.$router.push({
         name: name

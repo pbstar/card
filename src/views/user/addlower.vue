@@ -104,7 +104,7 @@ export default {
         if (res.code == 200) {
           Toast.success('新增成功')
           this.$router.push({
-            name: 'AdminLower'
+            name: 'UserLower'
           })
         } else {
           Toast.fail('操作失败')

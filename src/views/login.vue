@@ -20,7 +20,10 @@
                   @click="toLogin"
                   class="btn">登录</van-button>
     </div>
-    <div class="bot">©Copyright2022</div>
+    <div class="bot">
+      <p>© Copyright2022</p>
+      <p>冀ICP备2021011553号-2</p>
+    </div>
   </div>
 </template>
 
@@ -37,7 +40,7 @@ export default {
     let token = localStorage.getItem("token");
     if (token && Number(token) + 86400000 > Date.now()) {
       this.$router.push({
-        name: "AdminHome",
+        name: "UserHome",
       });
       return;
     }
@@ -62,7 +65,7 @@ export default {
             onOpened: () => {
               setTimeout(() => {
                 this.$router.push({
-                  name: "AdminHome",
+                  name: "UserHome",
                 });
               }, 500);
             }
@@ -112,7 +115,9 @@ export default {
 }
 .bot {
   font-size: 12px;
-  margin-bottom: 16px;
+  line-height: 20px;
+  margin-bottom: 20px;
   color: #666;
+  text-align: center;
 }
 </style>

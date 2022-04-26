@@ -1,22 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/login'
-import Admin from '../views/admin'
+import User from '../views/user'
 import Store from '../views/store'
 import Detail from '../views/detail'
 import Order from '../views/order'
-import AdminHome from '../views/admin/home'
-import AdminUpPass from '../views/admin/upPass'
-import AdminLower from '../views/admin/lower'
-import AdminLevel from '../views/admin/level'
-import AdminGoods from '../views/admin/goods'
-import AdminEarnings from '../views/admin/earnings'
-import AdminOrder from '../views/admin/order'
-import AdminAddLower from '../views/admin/addlower'
+import UserHome from '../views/user/home'
+import UserUpPass from '../views/user/upPass'
+import UserLower from '../views/user/lower'
+import UserLevel from '../views/user/level'
+import UserGoods from '../views/user/goods'
+import UserEarnings from '../views/user/earnings'
+import UserOrder from '../views/user/order'
+import UserAddLower from '../views/user/addlower'
 
 const routes = [
     {
         path: '',
-        redirect: '/admin/home',
+        redirect: '/user/home',
     }, {
         path: '/login',
         name: 'Login',
@@ -34,46 +34,46 @@ const routes = [
         name: 'Order',
         component: Order
     }, {
-        path: '/admin',
-        name: 'Admin',
-        component: Admin,
-        redirect: '/admin/home',
+        path: '/user',
+        name: 'User',
+        component: User,
+        redirect: '/user/home',
         children: [{
             path: 'home',
-            name: 'AdminHome',
-            component: AdminHome
+            name: 'UserHome',
+            component: UserHome
         }, {
             path: 'upPass',
-            name: 'AdminUpPass',
-            component: AdminUpPass
+            name: 'UserUpPass',
+            component: UserUpPass
         }, {
             path: 'order',
-            name: 'AdminOrder',
-            component: AdminOrder
+            name: 'UserOrder',
+            component: UserOrder
         }, {
             path: 'earnings',
-            name: 'AdminEarnings',
-            component: AdminEarnings
+            name: 'UserEarnings',
+            component: UserEarnings
         }, {
             path: 'goods',
-            name: 'AdminGoods',
-            component: AdminGoods
+            name: 'UserGoods',
+            component: UserGoods
         }, {
             path: 'level',
-            name: 'AdminLevel',
-            component: AdminLevel
+            name: 'UserLevel',
+            component: UserLevel
         }, {
             path: 'lower',
-            name: 'AdminLower',
-            component: AdminLower
+            name: 'UserLower',
+            component: UserLower
         }, {
             path: 'addlower',
-            name: 'AdminAddLower',
-            component: AdminAddLower
+            name: 'UserAddLower',
+            component: UserAddLower
         }]
     }, {
         path: '/:pathMatch(.*)*',
-        redirect: '/admin/home',
+        redirect: '/user/home',
     },
 ]
 

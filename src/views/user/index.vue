@@ -25,7 +25,7 @@
         <div class="trbox"
              v-show="istopRight">
           <span style="border-bottom:1px solid #eee"
-                @click="toPage('AdminUpPass')">修改密码</span>
+                @click="toPage('UserUpPass')">修改密码</span>
           <span @click="toClear">退出登录</span>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <van-icon name="wap-home"
                   style="margin-right:2px" />
         <span class="a"
-              @click="toPage('AdminHome')">首页</span>
+              @click="toPage('UserHome')">首页</span>
         <span class="slash"
               v-show="pageText2">/</span>
         <span class="a"
@@ -67,14 +67,14 @@ export default {
       handler () {
         let text = this.$route.name
         this.pageText2 = ''
-        if (text == 'AdminHome') this.pageText = '首页'
-        else if (text == 'AdminEarnings') this.pageText = '收益管理'
-        else if (text == 'AdminGoods') this.pageText = '商品管理'
-        else if (text == 'AdminLevel') this.pageText = '等级管理'
-        else if (text == 'AdminLower') this.pageText = '下级管理'
-        else if (text == 'AdminOrder') this.pageText = '订单管理'
-        else if (text == 'AdminUpPass') this.pageText = '修改密码'
-        else if (text == 'AdminAddLower') { this.pageText = '新增下级'; this.pageText2 = '下级管理' }
+        if (text == 'UserHome') this.pageText = '首页'
+        else if (text == 'UserEarnings') this.pageText = '收益管理'
+        else if (text == 'UserGoods') this.pageText = '商品管理'
+        else if (text == 'UserLevel') this.pageText = '等级管理'
+        else if (text == 'UserLower') this.pageText = '下级管理'
+        else if (text == 'UserOrder') this.pageText = '订单管理'
+        else if (text == 'UserUpPass') this.pageText = '修改密码'
+        else if (text == 'UserAddLower') { this.pageText = '新增下级'; this.pageText2 = '下级管理' }
       },
       immediate: true,
       deep: true
@@ -111,7 +111,7 @@ export default {
       })
     },
     toPage2 () {
-      if (this.pageText2 == '下级管理') this.toPage('AdminLower')
+      if (this.pageText2 == '下级管理') this.toPage('UserLower')
     }
   }
 }
