@@ -20,6 +20,7 @@
                 <span>佣金：{{item.comm}}元</span>
               </div>
               <div class="br3">
+                <span>是否上架：</span>
                 <van-switch v-model="item.isShow"
                             inactive-color="#eee"
                             @click="toClick(item.id,item.isShow)"
@@ -85,6 +86,9 @@ export default {
 </script>
 
 <style scoped>
+.home /deep/ .van-grid-item__content {
+  padding: 8px;
+}
 .box {
   width: 100%;
   display: flex;
@@ -111,7 +115,10 @@ export default {
   color: rgb(205, 0, 0);
 }
 .br3 {
+  font-size: 12px;
   height: 16px;
   margin-top: 4px;
+  display: flex;
+  align-items: center;
 }
 </style>

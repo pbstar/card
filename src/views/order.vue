@@ -25,17 +25,32 @@
                      height="60"
                      :src="item.img" />
           <div class="bright">
-            <div class="br1"><span class="leb">订单编号：</span>{{item.time}}{{item.id}}</div>
-            <div class="br2"><span class="leb">套餐类型：</span>{{item.title}}</div>
-            <div class="br4"><span class="leb">姓名：</span>{{item.name}}</div>
-            <div class="br4"><span class="leb">身份证号：</span>{{item.idcard}}</div>
-            <div class="br4"><span class="leb">手机号：</span>{{item.tel}}</div>
-            <div class="br4"><span class="leb">地址：</span>{{item.address}}</div>
-            <div class="br4"><span class="leb">订单状态：</span>
+            <div class="brbox br1">
+              <span class="leb">订单编号：</span>
+              <div>{{item.time}}{{item.id}}</div>
+            </div>
+            <div class="brbox br2">
+              <span class="leb">套餐类型：</span>
+              <div>{{item.title}}</div>
+            </div>
+            <div class="brbox br4">
+              <span class="leb">姓名：</span>
+              <div>{{item.name}}</div>
+            </div>
+            <div class="brbox br4">
+              <span class="leb">手机号：</span>
+              <div>{{item.tel}}</div>
+            </div>
+            <div class="brbox br4">
+              <span class="leb">地址：</span>
+              <div>{{item.address}}</div>
+            </div>
+            <div class="brbox br4">
+              <span class="leb">订单状态：</span>
               <span style="color:rgb(220, 0, 0)">{{item.state==1?'待审核':(item.state==2?'已发货':(item.state==3?'已驳回':(item.state==1?'待结算':'已结算')))}}</span>
               <span v-show="item.stateText">（{{item.stateText}}）</span>
             </div>
-            <div class="br3">{{formatDate(item.time)}}</div>
+            <div class="brbox br3">{{formatDate(item.time)}}</div>
           </div>
         </div>
       </van-grid-item>
@@ -111,12 +126,19 @@ export default {
   width: 100%;
   display: flex;
 }
+
 .bright {
   flex: 1;
   padding-left: 10px;
 }
-.br1 {
+.brbox {
+  display: flex;
   font-size: 12px;
+}
+.brbox div {
+  flex: 1;
+}
+.br1 {
   color: #888;
   line-height: 19px;
   border-bottom: 1px solid #eee;
@@ -127,7 +149,11 @@ export default {
   max-height: 36px;
   line-height: 18px;
   margin: 2px 0;
-  font-size: 12px;
+}
+.br2 div {
+  flex: 1;
+  max-height: 36px;
+  line-height: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -135,7 +161,6 @@ export default {
   -webkit-box-orient: vertical;
 }
 .br3 {
-  font-size: 12px;
   color: #888;
   line-height: 19px;
   border-top: 1px solid #eee;
@@ -143,13 +168,12 @@ export default {
   margin-top: 3px;
 }
 .br4 {
-  font-size: 12px;
   line-height: 18px;
   margin: 2px 0;
 }
 .leb {
   font-weight: 800;
-  width: 60px;
+  width: 65px;
   display: inline-block;
 }
 </style>

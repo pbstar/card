@@ -12,6 +12,8 @@ import UserGoods from '../views/user/goods'
 import UserEarnings from '../views/user/earnings'
 import UserOrder from '../views/user/order'
 import UserAddLower from '../views/user/addlower'
+import UserAdmin from '../views/admin'
+import UserAdminAddgoods from '../views/admin/addgoods'
 
 const routes = [
     {
@@ -70,6 +72,14 @@ const routes = [
             path: 'addlower',
             name: 'UserAddLower',
             component: UserAddLower
+        }, {
+            path: 'admin',
+            name: 'UserAdmin',
+            component: UserAdmin
+        }, {
+            path: 'adminaddgoods',
+            name: 'UserAdminAddgoods',
+            component: UserAdminAddgoods
         }]
     }, {
         path: '/:pathMatch(.*)*',

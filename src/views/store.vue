@@ -81,13 +81,16 @@ export default {
 .body {
   padding-top: 58px;
 }
+.body /deep/ .van-grid-item__content {
+  padding: 8px;
+}
 .box {
   display: flex;
   flex-direction: column;
 }
 .box img {
-  width: 40vw;
-  height: 40vw;
+  width: 100%;
+  height: 41vw;
   margin-bottom: 8px;
 }
 .btitle {

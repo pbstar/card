@@ -20,6 +20,9 @@
         <van-grid-item icon="shop-o"
                        @click="toStore()"
                        text="店铺中心" />
+        <van-grid-item icon="setting-o"
+                       @click="toPage('UserAdmin')"
+                       text="管理中心" />
       </van-grid>
     </div>
   </div>

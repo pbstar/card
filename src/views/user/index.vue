@@ -75,6 +75,8 @@ export default {
         else if (text == 'UserOrder') this.pageText = '订单管理'
         else if (text == 'UserUpPass') this.pageText = '修改密码'
         else if (text == 'UserAddLower') { this.pageText = '新增下级'; this.pageText2 = '下级管理' }
+        else if (text == 'UserAdmin') this.pageText = '管理中心'
+        else if (text == 'UserAdminAddgoods') { this.pageText = '新增商品'; this.pageText2 = '管理中心' }
       },
       immediate: true,
       deep: true
@@ -112,6 +114,7 @@ export default {
     },
     toPage2 () {
       if (this.pageText2 == '下级管理') this.toPage('UserLower')
+      else if (this.pageText2 == '管理中心') this.toPage('UserAdmin')
     }
   }
 }
