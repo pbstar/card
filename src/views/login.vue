@@ -21,7 +21,7 @@
                   class="btn">登录</van-button>
     </div>
     <div class="bot">
-      <p>© Copyright2022</p>
+      <p>V1.0.2</p>
       <p>冀ICP备2021011553号-2</p>
     </div>
   </div>
