@@ -14,10 +14,11 @@ export default {
     },
     post (url, data) {
         return new Promise((resolve, reject) => {
-            axios.post(url, data).then(
-                response => { resolve(response.data) },
-                err => { reject(err) }
-            )
+            axios.post(url, data).then(response => {
+                resolve(response.data)
+            }, err => {
+                reject(err)
+            })
         })
     }
 };
