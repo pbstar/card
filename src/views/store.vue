@@ -81,7 +81,7 @@ export default {
 .body {
   padding-top: 58px;
 }
-.body /deep/ .van-grid-item__content {
+.body :deep() .van-grid-item__content {
   padding: 8px;
 }
 .box {

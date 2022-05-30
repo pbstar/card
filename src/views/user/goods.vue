@@ -86,7 +86,7 @@ export default {
 </script>
 
 <style scoped>
-.home /deep/ .van-grid-item__content {
+.home :deep() .van-grid-item__content {
   padding: 8px;
 }
 .box {
